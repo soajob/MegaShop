@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../common/constants.dart';
+import 'package:flutter_svg/svg.dart';
+import '../cart/cart_screen.dart';
 import 'components/body.dart';
+import '../../common/constants.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -12,8 +14,24 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: textColorDarkCommon,
         title: const Text(appName, style: TextStyle(color: Colors.white)),
         centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+            icon: SvgPicture.asset(
+              "assets/icons/cart.svg",
+              colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+            ),
+            onPressed: () => _handleCartClick(context),
+          ),
+        ],
       ),
-      body: HomeScreenBody()
+      body: const HomeScreenBody()
     );
   }
+}
+
+void _handleCartClick(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const CartScreen())
+  );
 }
