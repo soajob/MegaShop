@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mega_shop/locator_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../cart/cart_screen.dart';
 import 'components/body.dart';
 import '../../common/constants.dart';
@@ -30,8 +32,14 @@ class HomeScreen extends StatelessWidget {
 }
 
 void _handleCartClick(BuildContext context) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const CartScreen())
-  );
+  final isUserLoggedIn = serviceLocator<SharedPreferences>().getBool(
+      'isUserLoggedIn'
+  ) ?? false;
+
+  if (isUserLoggedIn) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const CartScreen())
+    );
+  }
 }

@@ -3,6 +3,7 @@ import 'package:mega_shop/data/repositories/product_repository_impl.dart';
 import 'package:mega_shop/domain/repositories/product_repository.dart';
 import 'package:mega_shop/domain/usecases/get_all_products.dart';
 import 'package:mega_shop/presentation/bloc/product_list_cubit/product_list_cubit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final serviceLocator = GetIt.instance;
 
@@ -19,4 +20,8 @@ Future<void> init() async {
   serviceLocator.registerLazySingleton<ProductRepository>(
     () => ProductRepositoryImpl()
   );
+
+  // External
+  final sharedPreferences = await SharedPreferences.getInstance();
+  serviceLocator.registerLazySingleton(() => sharedPreferences);
 }
