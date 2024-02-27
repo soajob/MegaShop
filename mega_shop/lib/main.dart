@@ -4,11 +4,9 @@ import 'package:mega_shop/presentation/bloc/product_list_cubit/product_list_cubi
 import 'package:mega_shop/presentation/common/constants.dart';
 import 'package:mega_shop/presentation/screens/home/home_screen.dart';
 import 'package:mega_shop/locator_service.dart' as di;
-
 import '../locator_service.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   await di.init();
   runApp(MyApp());
 }

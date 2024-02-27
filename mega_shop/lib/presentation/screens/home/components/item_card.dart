@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import '../../../domain/entities/product_entity.dart';
-import '../../common/constants.dart';
+import '../../../../domain/entities/product_entity.dart';
+import '../../../common/constants.dart';
 
 class ItemCard extends StatelessWidget {
-  const ItemCard({super.key, required this.product, required this.press});
-
   final ProductEntity product;
   final VoidCallback press;
+
+  const ItemCard({
+    super.key,
+    required this.product,
+    required this.press
+  });
 
   @override
   Widget build(BuildContext context) {
