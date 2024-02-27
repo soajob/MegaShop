@@ -24,6 +24,7 @@ class ProductRepositoryImpl implements ProductRepository {
 
   ProductEntity _generateFakeProduct(int index) => ProductEntity(
       id: index,
+      category: _getCategory(index),
       title: "Product #$index: Title",
       price: 100 + index,
       size: Random().nextInt(20),
@@ -31,6 +32,22 @@ class ProductRepositoryImpl implements ProductRepository {
       image: _getImagePath(index-1),
       // "assets/images/men_image_1.png"
     );
+
+  String _getCategory(int index) {
+    List<String> categories = [
+      "Men's shoes",
+      "Women's shoes",
+    ];
+
+    var result = "";
+    if (index < 4) {
+      result = categories[0];
+    } else {
+      result = categories[1];
+    }
+
+    return result;
+  }
 
   String _getImagePath(int index) {
     List<String> paths = [
