@@ -1,6 +1,6 @@
 import 'package:mega_shop/domain/entities/product_entity.dart';
-import '../../domain/repositories/product_repository.dart';
 import 'dart:math';
+import '../../domain/repositories/product_repository.dart';
 
 class ProductRepositoryImpl implements ProductRepository {
   @override
@@ -27,7 +27,7 @@ class ProductRepositoryImpl implements ProductRepository {
       category: _getCategory(index),
       title: "Product #$index: Title",
       price: 100 + index,
-      size: Random().nextInt(20),
+      size: Random().nextInt(10) + 35,
       description: "Product #$index: Description",
       image: _getImagePath(index-1),
       // "assets/images/men_image_1.png"
